@@ -1523,7 +1523,7 @@ class LpProblem(object):
         f.write(self.objective.asCplexLpAffineExpression(objName, constant = 0))
         f.write("Subject To\n")
         ks = list(self.constraints.keys())
-        ks.sort()
+        ks.sort(key=lambda a:int(''.join(x for x in a if x.isdigit())))
         dummyWritten = False
         for k in ks:
             constraint = self.constraints[k]
